@@ -1,5 +1,5 @@
-const w = 700;
-const h = 500;
+const w = 1000;
+const h = 800;
 const m = 50;
 
 const content = d3.select('.content');
@@ -66,11 +66,12 @@ d3.json('https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/
 			.enter()
 			.append('text')
 			.attr('x', d => d.x0)
-			.attr('y', d => d.y0)
+			.attr('y', d => d.y0 + 5)
 			.attr('class', 'tile-text')
 			.attr('fill', 'black')
 			.attr('text-anchor', 'start')
-			.text(d => d.data.name);
+			.attr('alignment-baseline', 'hanging')
+			.text(d => d.data.name.substring(0, 10) + (d.data.name.length > 10 ? '...' : ''));
 
 		legend.selectAll('rect')
 			.data(data.children)
